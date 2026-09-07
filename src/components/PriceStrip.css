@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   gap: 0.55rem;
-  padding: 1rem 1.25rem;
+  padding: 0.7rem 0.95rem;
   background: color-mix(in srgb, var(--mist) 88%, transparent);
   color: var(--ink);
   border: 1px solid color-mix(in srgb, var(--ink) 18%, transparent);
@@ -32,7 +32,7 @@
 
 .price-strip__px {
   font-family: var(--font-mono);
-  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-size: clamp(1.35rem, 2.5vw, 1.85rem);
   font-weight: 600;
   letter-spacing: -0.02em;
 }

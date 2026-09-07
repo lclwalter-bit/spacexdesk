@@ -43,7 +43,7 @@ export function PriceChart() {
       rightPriceScale: { borderVisible: false },
       timeScale: { borderVisible: false, timeVisible: true, secondsVisible: false },
       crosshair: { mode: 1 },
-      height: 380,
+      height: 240,
     })
     const candles = chart.addSeries(CandlestickSeries, {
       upColor: '#3dcf86',

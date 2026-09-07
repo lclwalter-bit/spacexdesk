@@ -51,11 +51,8 @@ export function TeslaCompare({ price }: { price: number | null }) {
         <p className="eyebrow">Relative value · TSLA analog</p>
         <h2>SPCX vs Tesla cliffs</h2>
         <p className="section__lede">
-          Map Tesla’s supply events onto SPCX’s calendar. Tesla’s 2010 lockup
-          was ~80% of shares becoming eligible in one session. SPCX’s next print
-          is 2.4%. Product-magnitude thesis: Starlink + launch + orbital compute
-          &gt; cars — Tesla’s path is the floor for how ops re-rate, not a 2010
-          IPO multiple.
+          Tesla 2010 lockup was ~80% SO in one day (−15%). SPCX next print is
+          2.4% — Tesla is the floor for ops re-rate, not an IPO multiple.
         </p>
       </header>
 

@@ -10,7 +10,7 @@
   display: grid;
   grid-template-columns: 9rem 1fr;
   gap: 1rem;
-  padding: 1.15rem 0;
+  padding: 0.65rem 0;
   border-bottom: 1px solid var(--line);
 }
 

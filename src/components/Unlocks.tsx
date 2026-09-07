@@ -12,8 +12,8 @@ export function Unlocks({ price }: { price: number | null }) {
         <p className="eyebrow">Supply calendar</p>
         <h2>Unlocks & cliffs</h2>
         <p className="section__lede">
-          Eligibility dates from the IPO prospectus. ~{SHARES_OUTSTANDING_B}B shares
-          outstanding. Notional at live ~{fmtMoney(px, 0)}.
+          Prospectus eligibility. ~{SHARES_OUTSTANDING_B}B SO. Notional at live ~
+          {fmtMoney(px, 0)}.
         </p>
       </header>
 

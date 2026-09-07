@@ -44,17 +44,21 @@ export default function App() {
       <header id="top" className="hero">
         <div className="hero__atmosphere" aria-hidden />
         <div className="hero__inner">
-          <p className="hero__kicker">SpaceX public equity · trader desk</p>
-          <h1 className="hero__brand">SPCX</h1>
-          <p className="hero__line">
-            Live Yahoo tape (RTH + pre/post), unlock cliffs, ops schedule, and
-            primary Musk / KOL signal — one composition for the desk.
-          </p>
-          <div className="hero__cta">
-            <a href="#unlocks">Next unlock</a>
-            <a className="ghost" href="#flights">
-              Flight 14
-            </a>
+          <div className="hero__copy">
+            <p className="hero__kicker">SpaceX public equity · trader desk</p>
+            <h1 className="hero__brand">SPCX</h1>
+            <p className="hero__line">
+              Live Yahoo tape, unlock cliffs, ops, and primary Musk / KOL signal.
+            </p>
+            <div className="hero__cta">
+              <a href="#unlocks">Next unlock</a>
+              <a className="ghost" href="#flights">
+                Flight 14
+              </a>
+              <a className="ghost" href="#tesla">
+                vs TSLA
+              </a>
+            </div>
           </div>
           <div className="hero__price">
             <PriceStrip onQuote={onQuote} />
@@ -68,9 +72,8 @@ export default function App() {
             <p className="eyebrow">Market</p>
             <h2>Price & extended hours</h2>
             <p className="section__lede">
-              Candles from Yahoo Finance with <code>includePrePost=true</code>.
-              Quotes refresh every 20s; chart every 60s. True overnight prints only
-              exist in pre/post sessions — gaps outside those windows are expected.
+              Yahoo candles with <code>includePrePost=true</code>. Quote 20s ·
+              chart 60s.
             </p>
           </header>
           <PriceChart />
