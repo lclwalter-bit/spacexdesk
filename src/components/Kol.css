@@ -1,0 +1,58 @@
+.kol__list {
+  display: grid;
+  gap: 1.15rem;
+}
+
+.kol-card {
+  padding: 1.35rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.kol-card:first-child {
+  padding-top: 0;
+}
+
+.kol-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.85rem;
+}
+
+.kol-card__meta strong {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+}
+
+.kol-card__meta span {
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+}
+
+.kol-card blockquote {
+  margin: 0 0 0.85rem;
+  padding: 0;
+  border: 0;
+  font-family: var(--font-serif);
+  font-size: clamp(1.05rem, 2vw, 1.25rem);
+  line-height: 1.45;
+  color: var(--ink);
+}
+
+.kol-card__why {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
+.kol-card__why span {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--signal-ink);
+  margin-right: 0.55rem;
+}

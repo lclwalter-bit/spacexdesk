@@ -1,0 +1,53 @@
+:root {
+  --ink: #142030;
+  --fog: #eef3f8;
+  --mist: #d7e2ec;
+  --surface: #f7f9fb;
+  --line: #c8d3de;
+  --muted: #5a6574;
+  --signal: #e36a1a;
+  --signal-ink: #b34d0c;
+  --gain: #1f7a4c;
+  --loss: #b42318;
+  --font-display: 'Syne', system-ui, sans-serif;
+  --font-sans: 'Manrope', system-ui, sans-serif;
+  --font-serif: 'Source Serif 4', Georgia, serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+  color: var(--ink);
+  background: var(--fog);
+  font-family: var(--font-sans);
+  line-height: 1.45;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background:
+    radial-gradient(1200px 600px at 10% -10%, rgba(227, 106, 26, 0.12), transparent 55%),
+    radial-gradient(900px 500px at 90% 0%, rgba(42, 90, 130, 0.14), transparent 50%),
+    linear-gradient(180deg, #e8eef5 0%, #f4f7fa 40%, #eef3f8 100%);
+}
+
+a {
+  color: inherit;
+}
+
+code {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+}
+
+#root {
+  min-height: 100vh;
+}

@@ -1,0 +1,74 @@
+.flights__list {
+  display: grid;
+  gap: 1rem;
+}
+
+.flight {
+  padding: 1.25rem 1.35rem;
+  border-left: 3px solid var(--line);
+  background: var(--surface);
+  border-top: 1px solid var(--line);
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.flight.is-target {
+  border-left-color: var(--signal);
+}
+
+.flight.is-done {
+  border-left-color: var(--muted);
+}
+
+.flight.is-scheduled {
+  border-left-color: var(--ink);
+}
+
+.flight__top {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.55rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.flight__status {
+  color: var(--muted);
+}
+
+.flight.is-target .flight__status {
+  color: var(--signal-ink);
+}
+
+.flight h3 {
+  margin: 0 0 0.35rem;
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+}
+
+.flight__when {
+  margin: 0 0 0.65rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.flight__payload {
+  margin: 0 0 0.5rem;
+  font-weight: 600;
+}
+
+.flight__notes {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.flights__cadence {
+  margin: 1.5rem 0 0;
+  padding-left: 1.1rem;
+  color: var(--muted);
+  line-height: 1.55;
+}
