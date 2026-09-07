@@ -8,10 +8,12 @@ import { Kol } from './components/Kol'
 import { News } from './components/News'
 import { Presentations } from './components/Presentations'
 import { TeslaCompare } from './components/TeslaCompare'
+import { Tldr } from './components/Tldr'
 import type { Quote } from './lib/yahoo'
 import './App.css'
 
 const NAV = [
+  { href: '#tldr', label: 'TLDR' },
   { href: '#tape', label: 'Tape' },
   { href: '#unlocks', label: 'Unlocks' },
   { href: '#tesla', label: 'vs TSLA' },
@@ -63,6 +65,9 @@ export default function App() {
           <div className="hero__price">
             <PriceStrip onQuote={onQuote} />
           </div>
+        </div>
+        <div className="hero__tldr">
+          <Tldr quote={quote} />
         </div>
       </header>
 
