@@ -34,7 +34,7 @@
 .chart-panel__ranges button.is-active {
   color: var(--ink);
   border-color: var(--ink);
-  background: color-mix(in srgb, var(--signal) 12%, white);
+  background: color-mix(in srgb, var(--signal) 18%, var(--surface));
 }
 
 .chart-panel__status {

@@ -5,7 +5,7 @@
   align-items: baseline;
   padding: 1.1rem 1.25rem;
   margin-bottom: 1.25rem;
-  background: linear-gradient(120deg, color-mix(in srgb, var(--signal) 18%, white), var(--surface));
+  background: linear-gradient(120deg, color-mix(in srgb, var(--signal) 22%, var(--surface)), var(--surface));
   border-left: 3px solid var(--signal);
 }
 
@@ -37,7 +37,7 @@
   color: var(--muted);
   padding: 0.85rem 1rem;
   border-bottom: 1px solid var(--line);
-  background: color-mix(in srgb, var(--mist) 70%, white);
+  background: var(--mist);
 }
 
 .unlocks__table td {
@@ -49,7 +49,7 @@
 }
 
 .unlocks__table tr.is-next {
-  background: color-mix(in srgb, var(--signal) 8%, white);
+  background: color-mix(in srgb, var(--signal) 12%, var(--surface));
 }
 
 .unlocks__label {
@@ -83,7 +83,7 @@
 .pill--next {
   color: var(--ink);
   border-color: var(--signal);
-  background: color-mix(in srgb, var(--signal) 16%, white);
+  background: color-mix(in srgb, var(--signal) 22%, var(--surface));
 }
 
 .pill--upcoming {

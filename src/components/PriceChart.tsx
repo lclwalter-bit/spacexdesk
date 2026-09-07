@@ -33,12 +33,12 @@ export function PriceChart() {
     const chart = createChart(wrapRef.current, {
       layout: {
         background: { type: ColorType.Solid, color: 'transparent' },
-        textColor: '#5a6574',
+        textColor: '#8d9aab',
         fontFamily: 'IBM Plex Mono, ui-monospace, monospace',
       },
       grid: {
-        vertLines: { color: 'rgba(20, 32, 48, 0.06)' },
-        horzLines: { color: 'rgba(20, 32, 48, 0.06)' },
+        vertLines: { color: 'rgba(232, 238, 245, 0.08)' },
+        horzLines: { color: 'rgba(232, 238, 245, 0.08)' },
       },
       rightPriceScale: { borderVisible: false },
       timeScale: { borderVisible: false, timeVisible: true, secondsVisible: false },
@@ -46,12 +46,12 @@ export function PriceChart() {
       height: 380,
     })
     const candles = chart.addSeries(CandlestickSeries, {
-      upColor: '#1f7a4c',
-      downColor: '#b42318',
-      borderUpColor: '#1f7a4c',
-      borderDownColor: '#b42318',
-      wickUpColor: '#1f7a4c',
-      wickDownColor: '#b42318',
+      upColor: '#3dcf86',
+      downColor: '#ee6b60',
+      borderUpColor: '#3dcf86',
+      borderDownColor: '#ee6b60',
+      wickUpColor: '#3dcf86',
+      wickDownColor: '#ee6b60',
     })
     const vols = chart.addSeries(HistogramSeries, {
       priceFormat: { type: 'volume' },
@@ -96,7 +96,7 @@ export function PriceChart() {
           time: r.time as UTCTimestamp,
           value: r.volume,
           color:
-            r.close >= r.open ? 'rgba(31, 122, 76, 0.35)' : 'rgba(180, 35, 24, 0.35)',
+            r.close >= r.open ? 'rgba(61, 207, 134, 0.4)' : 'rgba(238, 107, 96, 0.4)',
         }))
         candleRef.current.setData(cdata)
         volRef.current.setData(vdata)
