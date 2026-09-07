@@ -10,7 +10,7 @@ import {
 import type { Quote } from '../lib/yahoo'
 import './Tldr.css'
 
-const STORAGE_KEY = 'spcx-tldr-print'
+const STORAGE_KEY = 'spcx-tldr-print-v2'
 
 function readStored(): TldrPrint | null {
   try {
@@ -88,6 +88,10 @@ export function Tldr({ quote }: { quote: Quote | null }) {
       <p className="tldr__line">
         <span className="tldr__stance">{print.stance}</span>
         <span className="tldr__because">, because {print.because}.</span>
+      </p>
+      <p className="tldr__action">
+        <span className="tldr__action-label">Next trade</span>
+        {print.action}
       </p>
       <p className="tldr__meta">
         {print.preview

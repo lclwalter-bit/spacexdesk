@@ -10,7 +10,48 @@ export type TldrPrint = {
   session: string
   stance: Stance
   because: string
+  action: string
+  focus: string
   preview: boolean
+}
+
+function shortDate(iso: string) {
+  const months = [
+    'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+    'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec',
+  ]
+  const [, m, d] = iso.split('-')
+  return `${Number(d)} ${months[Number(m) - 1]}`
+}
+
+function buildAction(
+  days: number | null,
+  next: (typeof unlocks)[number] | undefined,
+  f14: (typeof flights)[number] | undefined,
+) {
+  if (next && days != null && days > 0) {
+    const wait = days === 1 ? 'tomorrow' : shortDate(next.date)
+    return {
+      focus: `${shortDate(next.date)} ${next.label}`,
+      action: `Sit out until ${wait}. Next trade is a patient entry into ${next.label} (${next.pctOutstanding}% SO) — ignore today's tape. Hunt an Aug 20-style absorption (low $130.39 / close $134), not a chase.`,
+    }
+  }
+  if (next && days != null && days <= 0) {
+    return {
+      focus: `${shortDate(next.date)} ${next.label}`,
+      action: `Today is the print. Stay flat into the open; the trade is close/volume vs Aug 20, not fading the first tick. Eligibility ≠ forced sale.`,
+    }
+  }
+  if (f14) {
+    return {
+      focus: `${f14.id} NET ${shortDate(f14.netDate)}`,
+      action: `No unlock in the near window. Next setup is ${f14.id} — wait for a clean ops print, don't manufacture a trade.`,
+    }
+  }
+  return {
+    focus: 'Desk',
+    action: 'No timed setup. Stay patient until the next unlock or Flight 14 date is the focus.',
+  }
 }
 
 export function buildTldr(
@@ -70,6 +111,7 @@ export function buildTldr(
   const because =
     bits.slice(0, 3).join('; ') ||
     'desk is waiting on the next unlock, Flight 14, and the Yahoo tape'
+  const { action, focus } = buildAction(days, next, f14)
 
-  return { stance, because }
+  return { stance, because, action, focus }
 }

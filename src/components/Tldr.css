@@ -90,6 +90,28 @@
   color: var(--ink);
 }
 
+.tldr__action {
+  margin: 0.85rem 0 0;
+  padding: 0.7rem 0.8rem;
+  background: color-mix(in srgb, var(--signal) 22%, var(--fog));
+  border-left: 4px solid var(--signal);
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  line-height: 1.4;
+  font-weight: 650;
+  color: var(--ink);
+}
+
+.tldr__action-label {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--signal-ink);
+  font-weight: 600;
+}
+
 .tldr__meta {
   margin: 0.55rem 0 0;
   font-family: var(--font-mono);
