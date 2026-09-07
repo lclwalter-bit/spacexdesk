@@ -165,17 +165,7 @@
   font-size: clamp(5.2rem, 18vw, 10.5rem);
   line-height: 0.82;
   letter-spacing: -0.055em;
-  background: linear-gradient(
-    185deg,
-    #ffffff 8%,
-    #d8e7ff 42%,
-    #ffc089 78%,
-    #e36a1a 100%
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  filter: drop-shadow(0 0 34px rgba(227, 106, 26, 0.42));
+  color: #fff;
 }
 
 .hero__line {

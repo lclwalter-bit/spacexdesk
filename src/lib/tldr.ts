@@ -10,7 +10,7 @@ export type { Stance }
 export type TldrPrint = {
   session: string
   stance: Stance
-  because: string
+  lede: string
   action: string
   focus: string
   preview: boolean
@@ -34,24 +34,24 @@ function buildAction(
     const wait = days === 1 ? 'tomorrow' : shortDate(next.date)
     return {
       focus: `${shortDate(next.date)} ${next.label}`,
-      action: `Sit out until ${wait}. Next trade is a patient entry into ${next.label} (${next.pctOutstanding}% SO) — ignore today's tape. Hunt an Aug 20-style absorption (low $130.39 / close $134), not a chase.`,
+      action: `Stand aside until ${wait}. The setup is a patient entry into ${next.label} (${next.pctOutstanding}% of outstanding). Ignore today’s tape and look for Aug 20-style absorption (low $130.39 / close $134), not a chase.`,
     }
   }
   if (next && days != null && days <= 0) {
     return {
       focus: `${shortDate(next.date)} ${next.label}`,
-      action: `Today is the print. Stay flat into the open; the trade is close/volume vs Aug 20, not fading the first tick. Eligibility ≠ forced sale.`,
+      action: `Today is the print. Stay flat into the open. The read is close and volume versus Aug 20, not the first tick. Eligibility is not a forced sale.`,
     }
   }
   if (f14) {
     return {
       focus: `${f14.id} NET ${shortDate(f14.netDate)}`,
-      action: `No unlock in the near window. Next setup is ${f14.id} — wait for a clean ops print, don't manufacture a trade.`,
+      action: `No unlock in the near window. The next setup is ${f14.id}. Wait for a clean operations print rather than manufacturing a trade.`,
     }
   }
   return {
     focus: 'Desk',
-    action: 'No timed setup. Stay patient until the next unlock or Flight 14 date is the focus.',
+    action: 'No timed setup. Stay patient until the next unlock or Flight 14 is the focus.',
   }
 }
 
@@ -71,48 +71,52 @@ export function buildTldr(
   const news = newsItems[0]
 
   let score = 0
-  const bits: string[] = []
+  const sentences: string[] = []
 
   if (days != null && days <= 3 && next) {
     score -= 1
     const when =
       days <= 0 ? 'today' : days === 1 ? 'tomorrow' : `in ${days} sessions`
-    bits.push(
-      `${next.label} ${when} (${next.pctOutstanding}% SO, same size as Aug 20) is a supply test, not a thesis change`,
+    sentences.push(
+      `${next.label} prints ${when}. The ${next.pctOutstanding}% tranche matches Aug 20 in size — a supply test, not a thesis change.`,
     )
   } else if (days != null && days <= 10 && next) {
-    bits.push(`next supply ${next.date} (${next.pctOutstanding}% SO)`)
+    sentences.push(
+      `Next supply is ${shortDate(next.date)}: ${next.label} at ${next.pctOutstanding}% of outstanding.`,
+    )
   }
 
   if (chg != null && chg <= -0.015) {
     score -= 1
-    bits.push(`tape ${(chg * 100).toFixed(1)}% vs prior close`)
+    sentences.push(`The tape is ${(chg * 100).toFixed(1)}% versus the prior close.`)
   } else if (chg != null && chg >= 0.015) {
     score += 1
-    bits.push(`tape +${(chg * 100).toFixed(1)}% vs prior close`)
+    sentences.push(`The tape is +${(chg * 100).toFixed(1)}% versus the prior close.`)
   }
 
   if (vsIpo != null && vsIpo >= 0.03) {
     score += 1
-    bits.push(`still +${(vsIpo * 100).toFixed(1)}% vs IPO $135`)
+    sentences.push(`SPCX remains +${(vsIpo * 100).toFixed(1)}% versus the $135 IPO.`)
   } else if (vsIpo != null && vsIpo <= -0.05) {
     score -= 1
-    bits.push(`${(vsIpo * 100).toFixed(1)}% vs IPO $135`)
+    sentences.push(`SPCX is ${(vsIpo * 100).toFixed(1)}% versus the $135 IPO.`)
   }
 
   if (f14) {
-    bits.push(`${f14.id} NET ${f14.netDate} is the ops bid after this supply`)
+    sentences.push(
+      `Flight 14, NET ${shortDate(f14.netDate)}, is the operations bid after this supply is absorbed.`,
+    )
   }
 
   if (news?.tags.includes('unlock') || news?.tags.includes('macro')) {
-    bits.push(`${news.outlet}: ${news.title}`)
+    sentences.push(`${news.title}.`)
   }
 
   const stance: Stance = score >= 1 ? 'Bullish' : score <= -1 ? 'Bearish' : 'Stagnant'
-  const because =
-    bits.slice(0, 3).join('; ') ||
-    'desk is waiting on the next unlock, Flight 14, and the Yahoo tape'
+  const lede =
+    sentences.slice(0, 3).join(' ') ||
+    'The desk is waiting on the next unlock and Flight 14.'
   const { action, focus } = buildAction(days, next, f14)
 
-  return { stance, because, action, focus }
+  return { stance, lede, action, focus }
 }

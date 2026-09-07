@@ -11,13 +11,15 @@ import type { Quote } from '../lib/yahoo'
 import { StanceMark } from './StanceMark'
 import './Tldr.css'
 
-const STORAGE_KEY = 'spcx-tldr-print-v2'
+const STORAGE_KEY = 'spcx-tldr-print-v3'
 
 function readStored(): TldrPrint | null {
   try {
     const raw = localStorage.getItem(STORAGE_KEY)
     if (!raw) return null
-    return JSON.parse(raw) as TldrPrint
+    const parsed = JSON.parse(raw) as Partial<TldrPrint>
+    if (!parsed.lede || !parsed.stance) return null
+    return parsed as TldrPrint
   } catch {
     return null
   }
@@ -85,18 +87,18 @@ export function Tldr({ quote }: { quote: Quote | null }) {
       className={`tldr tldr--${stanceClass}`}
       aria-live="polite"
     >
-      <div className="tldr__top">
+      <header className="tldr__mast">
         <p className="tldr__kicker">TLDR</p>
         <span className="tldr__stance">
-          <StanceMark stance={print.stance} />
+          <StanceMark stance={print.stance} size="sm" />
           {print.stance}
         </span>
+      </header>
+      <p className="tldr__lede">{print.lede}</p>
+      <div className="tldr__trade">
+        <h3 className="tldr__trade-title">Next trade</h3>
+        <p className="tldr__trade-body">{print.action}</p>
       </div>
-      <p className="tldr__because">Because {print.because}.</p>
-      <p className="tldr__action">
-        <span className="tldr__action-label">Next trade</span>
-        {print.action}
-      </p>
       <p className="tldr__meta">
         {print.preview
           ? `Preview · official print ${prepLabel} (10m before the open)`
