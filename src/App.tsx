@@ -7,12 +7,14 @@ import { Flights } from './components/Flights'
 import { Kol } from './components/Kol'
 import { News } from './components/News'
 import { Presentations } from './components/Presentations'
+import { TeslaCompare } from './components/TeslaCompare'
 import type { Quote } from './lib/yahoo'
 import './App.css'
 
 const NAV = [
   { href: '#tape', label: 'Tape' },
   { href: '#unlocks', label: 'Unlocks' },
+  { href: '#tesla', label: 'vs TSLA' },
   { href: '#shareholder', label: 'Equity' },
   { href: '#flights', label: 'Flights' },
   { href: '#kol', label: 'Elon / KOL' },
@@ -75,6 +77,7 @@ export default function App() {
         </section>
 
         <Unlocks price={quote?.price ?? null} />
+        <TeslaCompare price={quote?.price ?? null} />
         <Shareholder price={quote?.price ?? null} />
         <Flights />
         <Kol />
@@ -84,8 +87,9 @@ export default function App() {
 
       <footer className="footer">
         <p>
-          Not investment advice. Unlock sizes from prospectus tracking; Flight 14
-          NET dates slip. Yahoo delayed/extended data via proxy.
+          Not investment advice. Unlock sizes from prospectus tracking; Tesla
+          analogs are event maps, not price targets. Flight 14 NET dates slip.
+          Yahoo delayed/extended data via proxy.
         </p>
         <p>SPCX Desk · built for Walter’s SpaceX trading workflow</p>
       </footer>
