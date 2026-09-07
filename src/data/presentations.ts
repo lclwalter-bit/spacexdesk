@@ -1,9 +1,12 @@
+import type { Stance } from '../lib/stance'
+
 export type Presentation = {
   title: string
   date: string
   kind: 'earnings' | 'ir' | 'ops' | 'policy'
   blurb: string
   url?: string
+  stance: Stance
 }
 
 export const presentations: Presentation[] = [
@@ -14,6 +17,7 @@ export const presentations: Presentation[] = [
     blurb:
       'Rev $7.81B; Connectivity / AI / Space segment splits; Flight 14 orbital V3; NVDA Vera Rubin orbital design; ARR commentary.',
     url: 'https://www.cnbc.com/2026/08/04/spacex-spcx-earnings-live-updates-q2-2026.html',
+    stance: 'Bullish',
   },
   {
     title: 'IPO prospectus / 424B4 lockup schedule',
@@ -21,6 +25,7 @@ export const presentations: Presentation[] = [
     kind: 'ir',
     blurb:
       'Source of truth for staggered unlocks, earnings-triggered cliffs, Musk lock to IPO+1y.',
+    stance: 'Stagnant',
   },
   {
     title: 'Starship Flight 13 mission summary',
@@ -28,11 +33,13 @@ export const presentations: Presentation[] = [
     kind: 'ops',
     blurb: 'First V3 payload on suborbital profile; intact Ship splashdown.',
     url: 'https://www.spacex.com/launches/starship-flight-13',
+    stance: 'Bullish',
   },
   {
     title: 'FCC STA — Flight 14 orbital radios / V3 deploy',
     date: '2026-09-01',
     kind: 'ops',
     blurb: 'Communications authority from 15 Sep 2026; confirms orbital second-stage intent.',
+    stance: 'Bullish',
   },
 ]

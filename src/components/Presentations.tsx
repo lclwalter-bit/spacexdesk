@@ -1,4 +1,5 @@
 import { presentations } from '../data/presentations'
+import { StanceMark } from './StanceMark'
 import './Presentations.css'
 
 export function Presentations() {
@@ -15,7 +16,10 @@ export function Presentations() {
       <ul className="presentations__list">
         {presentations.map((p) => (
           <li key={p.title}>
-            <span className="presentations__kind">{p.kind}</span>
+            <div className="presentations__kind-row">
+              <StanceMark stance={p.stance} size="sm" />
+              <span className="presentations__kind">{p.kind}</span>
+            </div>
             <div>
               {p.url ? (
                 <a href={p.url} target="_blank" rel="noreferrer">

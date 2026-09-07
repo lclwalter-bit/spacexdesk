@@ -3,8 +3,9 @@ import { newsItems } from '../data/news'
 import { shareholder } from '../data/shareholder'
 import { unlocks } from '../data/unlocks'
 import { daysUntilIso, nyClock, type NyClock } from './nyTime'
+import type { Stance } from './stance'
 
-export type Stance = 'Bullish' | 'Bearish' | 'Stagnant'
+export type { Stance }
 
 export type TldrPrint = {
   session: string

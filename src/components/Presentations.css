@@ -8,10 +8,17 @@
 
 .presentations__list li {
   display: grid;
-  grid-template-columns: 6.5rem 1fr;
+  grid-template-columns: 8.2rem 1fr;
   gap: 1rem;
   padding: 0.65rem 0;
   border-bottom: 1px solid var(--line);
+}
+
+.presentations__kind-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.45rem;
+  padding-top: 0.1rem;
 }
 
 .presentations__kind {

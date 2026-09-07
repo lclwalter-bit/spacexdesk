@@ -1,4 +1,5 @@
 import { newsItems } from '../data/news'
+import { StanceMark } from './StanceMark'
 import './News.css'
 
 export function News() {
@@ -16,6 +17,7 @@ export function News() {
         {newsItems.map((n) => (
           <li key={n.date + n.title}>
             <div className="news__when">
+              <StanceMark stance={n.stance} />
               <time>{n.date}</time>
               <span>{n.outlet}</span>
             </div>

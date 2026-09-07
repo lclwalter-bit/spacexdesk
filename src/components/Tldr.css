@@ -104,3 +104,7 @@
   width: min(1100px, 100%);
   margin: 0.9rem auto 0;
 }
+
+.hero__tldr .stance-legend {
+  margin: 0.7rem 0 0;
+}

@@ -1,3 +1,5 @@
+import type { Stance } from '../lib/stance'
+
 export type NewsItem = {
   date: string
   outlet: string
@@ -5,6 +7,7 @@ export type NewsItem = {
   summary: string
   url?: string
   tags: string[]
+  stance: Stance
 }
 
 export const newsItems: NewsItem[] = [
@@ -15,6 +18,7 @@ export const newsItems: NewsItem[] = [
     summary:
       'AVGO AI revenue +221% to $16.7B but sold on $34.8B Q4 guide. SPCX reclaimed toward $144 while NVDA bid — AI demand intact, AVGO guide-specific.',
     tags: ['AI', 'macro'],
+    stance: 'Bullish',
   },
   {
     date: '2026-09-02',
@@ -24,6 +28,7 @@ export const newsItems: NewsItem[] = [
       'Day-90 tranche ~319M (~2.4%), affiliate ~59M on Sept 10. Firmer entry than Aug 20 (~$137) means less pre-fade cushion.',
     url: 'https://financefeeds.com/spacex-spcx-share-unlock-september-9/',
     tags: ['unlock'],
+    stance: 'Bearish',
   },
   {
     date: '2026-09-01',
@@ -33,6 +38,7 @@ export const newsItems: NewsItem[] = [
       'STA covers orbital second stage and Starlink V3 deployment window from Sept 15. Radio authority ≠ FAA flight license.',
     url: 'https://www.teslarati.com/spacex-tells-the-fcc-that-starship-flight-14-is-going-to-orbit/',
     tags: ['Starship', 'ops'],
+    stance: 'Bullish',
   },
   {
     date: '2026-09-01',
@@ -41,6 +47,7 @@ export const newsItems: NewsItem[] = [
     summary:
       'Dontchev: Florida Starlink moves to Starship; Vandenberg keeps Falcon Starlink. Aligns with Musk wind-down-Falcon framing.',
     tags: ['Starlink', 'ops'],
+    stance: 'Bullish',
   },
   {
     date: '2026-08-28',
@@ -48,6 +55,7 @@ export const newsItems: NewsItem[] = [
     title: 'Booster 21 full 33-engine static fire',
     summary: 'Clears major F14 booster milestone on Pad 2 ahead of orbital attempt.',
     tags: ['Starship'],
+    stance: 'Bullish',
   },
   {
     date: '2026-08-28',
@@ -56,6 +64,7 @@ export const newsItems: NewsItem[] = [
     summary:
       'Sept FOMC hike odds ~57–60%. Growth multiples (NVDA/SPCX) sensitive into NFP/CPI.',
     tags: ['macro'],
+    stance: 'Bearish',
   },
   {
     date: '2026-08-04',
@@ -65,5 +74,6 @@ export const newsItems: NewsItem[] = [
       'Beat Street; after-hours soft on capex/AI losses. Musk ARR $100B YE26 framing; Starmind + NVIDIA announced.',
     url: 'https://www.cnbc.com/2026/08/04/spacex-spcx-earnings-live-updates-q2-2026.html',
     tags: ['earnings', 'AI'],
+    stance: 'Stagnant',
   },
 ]

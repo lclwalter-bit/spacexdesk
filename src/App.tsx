@@ -9,6 +9,7 @@ import { News } from './components/News'
 import { Presentations } from './components/Presentations'
 import { TeslaCompare } from './components/TeslaCompare'
 import { Tldr } from './components/Tldr'
+import { StanceLegend } from './components/StanceMark'
 import type { Quote } from './lib/yahoo'
 import './App.css'
 
@@ -68,6 +69,7 @@ export default function App() {
         </div>
         <div className="hero__tldr">
           <Tldr quote={quote} />
+          <StanceLegend />
         </div>
       </header>
 

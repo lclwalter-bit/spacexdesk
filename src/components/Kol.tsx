@@ -1,4 +1,5 @@
 import { kolPosts } from '../data/kol'
+import { StanceMark } from './StanceMark'
 import './Kol.css'
 
 export function Kol() {
@@ -16,17 +17,20 @@ export function Kol() {
       <div className="kol__list">
         {kolPosts.map((p) => (
           <article key={p.who + p.when + p.quote.slice(0, 24)} className="kol-card">
-            <div className="kol-card__meta">
-              <strong>{p.who}</strong>
-              <span>{p.role}</span>
-              <span>
-                {p.when} · {p.source}
-              </span>
+            <StanceMark stance={p.stance} />
+            <div className="kol-card__body">
+              <div className="kol-card__meta">
+                <strong>{p.who}</strong>
+                <span>{p.role}</span>
+                <span>
+                  {p.when} · {p.source}
+                </span>
+              </div>
+              <blockquote>“{p.quote}”</blockquote>
+              <p className="kol-card__why">
+                <span>Why</span> {p.why}
+              </p>
             </div>
-            <blockquote>“{p.quote}”</blockquote>
-            <p className="kol-card__why">
-              <span>Why</span> {p.why}
-            </p>
           </article>
         ))}
       </div>

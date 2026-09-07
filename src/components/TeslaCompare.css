@@ -42,6 +42,9 @@
 
 .tesla__next-kicker {
   margin: 0 0 0.35rem;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
   font-family: var(--font-mono);
   font-size: 0.7rem;
   letter-spacing: 0.12em;
@@ -110,6 +113,11 @@
   white-space: nowrap;
 }
 
+.tesla__stance {
+  width: 2.1rem;
+  padding-right: 0 !important;
+}
+
 .tesla__scenarios {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -131,6 +139,12 @@
   text-transform: uppercase;
   color: var(--muted);
   margin-bottom: 0.4rem;
+}
+
+.tesla__scenario-kicker {
+  display: flex !important;
+  align-items: center;
+  gap: 0.4rem;
 }
 
 .tesla__scenarios strong {

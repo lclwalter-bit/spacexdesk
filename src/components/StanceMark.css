@@ -1,0 +1,66 @@
+.stance-mark {
+  --stance: var(--signal);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 1.55rem;
+  height: 1.55rem;
+  border-radius: 50%;
+  color: var(--stance);
+  background: color-mix(in srgb, var(--stance) 16%, transparent);
+}
+
+.stance-mark--bullish {
+  --stance: var(--gain);
+}
+
+.stance-mark--bearish {
+  --stance: var(--loss);
+}
+
+.stance-mark--stagnant {
+  --stance: var(--signal);
+}
+
+.stance-mark svg {
+  display: block;
+  width: 0.95rem;
+  height: 0.95rem;
+}
+
+.stance-mark--sm {
+  width: 1.3rem;
+  height: 1.3rem;
+}
+
+.stance-mark--sm svg {
+  width: 0.82rem;
+  height: 0.82rem;
+}
+
+.stance-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+}
+
+.stance-row > .stance-mark {
+  margin-top: 0.08rem;
+}
+
+.stance-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem 1.15rem;
+  align-items: center;
+  margin: 0 0 0.85rem;
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+.stance-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}

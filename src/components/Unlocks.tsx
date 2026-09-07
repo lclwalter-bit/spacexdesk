@@ -1,5 +1,6 @@
 import { unlocks, notionalAt, SHARES_OUTSTANDING_B } from '../data/unlocks'
 import { fmtCompact, fmtMoney } from '../lib/yahoo'
+import { StanceMark } from './StanceMark'
 import './Unlocks.css'
 
 export function Unlocks({ price }: { price: number | null }) {
@@ -19,11 +20,14 @@ export function Unlocks({ price }: { price: number | null }) {
 
       {next && (
         <div className="unlocks__next">
-          <span className="unlocks__next-label">Next timed</span>
-          <strong>
-            {next.date} · {next.sharesM}M · {next.pctOutstanding}%
-          </strong>
-          <span>{fmtCompact(notionalAt(px, next.sharesM))} notional</span>
+          <StanceMark stance={next.stance} />
+          <div className="unlocks__next-copy">
+            <span className="unlocks__next-label">Next timed</span>
+            <strong>
+              {next.date} · {next.sharesM}M · {next.pctOutstanding}%
+            </strong>
+            <span>{fmtCompact(notionalAt(px, next.sharesM))} notional</span>
+          </div>
         </div>
       )}
 
@@ -31,6 +35,7 @@ export function Unlocks({ price }: { price: number | null }) {
         <table className="unlocks__table">
           <thead>
             <tr>
+              <th aria-label="Factor" />
               <th>Date</th>
               <th>Event</th>
               <th>Shares</th>
@@ -42,6 +47,9 @@ export function Unlocks({ price }: { price: number | null }) {
           <tbody>
             {unlocks.map((u) => (
               <tr key={u.date + u.label} className={`is-${u.status}`}>
+                <td className="unlocks__stance">
+                  <StanceMark stance={u.stance} size="sm" />
+                </td>
                 <td>{u.date}</td>
                 <td>
                   <div className="unlocks__label">{u.label}</div>

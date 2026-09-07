@@ -4,11 +4,13 @@ import {
   muskArrB,
   nextMilestone,
   q2AnnualizedB,
+  scenarioStances,
   teslaSalesMultiple,
   TSLA_SHARES_B,
 } from '../data/teslaAnalog'
 import { shareholder } from '../data/shareholder'
 import { fetchQuote, fmtCompact, fmtMoney, type Quote } from '../lib/yahoo'
+import { StanceMark } from './StanceMark'
 import './TeslaCompare.css'
 
 export function TeslaCompare({ price }: { price: number | null }) {
@@ -76,7 +78,10 @@ export function TeslaCompare({ price }: { price: number | null }) {
       </div>
 
       <div className="tesla__next">
-        <p className="tesla__next-kicker">Next milestone</p>
+        <p className="tesla__next-kicker">
+          <StanceMark stance={nextMilestone.stance} size="sm" />
+          Next milestone
+        </p>
         <h3>
           {nextMilestone.date} · {nextMilestone.label} · {nextMilestone.sharesM}M (
           {nextMilestone.pctOutstanding}%)
@@ -94,6 +99,7 @@ export function TeslaCompare({ price }: { price: number | null }) {
         <table className="tesla__table">
           <thead>
             <tr>
+              <th aria-label="Factor" />
               <th>Analog</th>
               <th>Tesla</th>
               <th>SPCX</th>
@@ -103,6 +109,9 @@ export function TeslaCompare({ price }: { price: number | null }) {
           <tbody>
             {analogRows.map((row) => (
               <tr key={row.analog}>
+                <td className="tesla__stance">
+                  <StanceMark stance={row.stance} size="sm" />
+                </td>
                 <td className="tesla__analog">{row.analog}</td>
                 <td>{row.tesla}</td>
                 <td>{row.spcx}</td>
@@ -115,7 +124,10 @@ export function TeslaCompare({ price }: { price: number | null }) {
 
       <div className="tesla__scenarios">
         <div>
-          <span>Q2 run-rate multiple</span>
+          <span className="tesla__scenario-kicker">
+            <StanceMark stance={scenarioStances.runRate} size="sm" />
+            Q2 run-rate multiple
+          </span>
           <strong>{runRateMult.toFixed(1)}×</strong>
           <p>
             {fmtCompact(spcxMkt)} on {fmtMoney(q2AnnualizedB * 1e9, 0)} annualized
@@ -124,7 +136,10 @@ export function TeslaCompare({ price }: { price: number | null }) {
           </p>
         </div>
         <div>
-          <span>At Musk $100B ARR</span>
+          <span className="tesla__scenario-kicker">
+            <StanceMark stance={scenarioStances.arr} size="sm" />
+            At Musk $100B ARR
+          </span>
           <strong>{arrMult.toFixed(1)}×</strong>
           <p>
             Same cap on $100B is {arrMult.toFixed(1)}× sales. Tesla-mature{' '}
@@ -133,7 +148,10 @@ export function TeslaCompare({ price }: { price: number | null }) {
           </p>
         </div>
         <div>
-          <span>Magnitude &gt; cars</span>
+          <span className="tesla__scenario-kicker">
+            <StanceMark stance={scenarioStances.magnitude} size="sm" />
+            Magnitude &gt; cars
+          </span>
           <strong>{fmtCompact(magnitudeCap)}</strong>
           <p>
             Tesla peak stretch ~{teslaSalesMultiple.peak}× ×{' '}

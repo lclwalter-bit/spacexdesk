@@ -1,4 +1,5 @@
 import { flights, cadenceNotes } from '../data/flights'
+import { StanceMark } from './StanceMark'
 import './Flights.css'
 
 export function Flights() {
@@ -17,7 +18,10 @@ export function Flights() {
         {flights.map((f) => (
           <article key={f.id} className={`flight is-${f.status}`}>
             <div className="flight__top">
-              <span className="flight__id">{f.id}</span>
+              <span className="flight__id-row">
+                <StanceMark stance={f.stance} size="sm" />
+                <span className="flight__id">{f.id}</span>
+              </span>
               <span className={`flight__status`}>{f.status}</span>
             </div>
             <h3>{f.vehicle}</h3>
@@ -32,7 +36,10 @@ export function Flights() {
 
       <ul className="flights__cadence">
         {cadenceNotes.map((n) => (
-          <li key={n}>{n}</li>
+          <li key={n.text}>
+            <StanceMark stance={n.stance} size="sm" />
+            <span>{n.text}</span>
+          </li>
         ))}
       </ul>
     </section>
