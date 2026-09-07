@@ -1,123 +1,100 @@
 .tldr {
+  --tldr: var(--signal);
   position: relative;
   z-index: 1;
   width: 100%;
   margin: 0;
-  padding: 1rem 1.15rem 0.95rem;
-  border: 2px solid var(--signal);
+  padding: 1.05rem 1.2rem 1rem;
+  border-radius: 14px;
+  border: 1.5px solid color-mix(in srgb, var(--tldr) 75%, transparent);
   background:
-    radial-gradient(120% 140% at 0% 0%, color-mix(in srgb, var(--signal) 38%, transparent), transparent 55%),
-    var(--mist);
-  box-shadow:
-    0 0 0 1px color-mix(in srgb, var(--signal) 55%, transparent),
-    0 12px 40px color-mix(in srgb, var(--signal) 28%, transparent);
-  animation: tldr-pulse 2.8s ease-in-out infinite;
-}
-
-@keyframes tldr-pulse {
-  0%,
-  100% {
-    box-shadow:
-      0 0 0 1px color-mix(in srgb, var(--signal) 55%, transparent),
-      0 12px 40px color-mix(in srgb, var(--signal) 28%, transparent);
-  }
-  50% {
-    box-shadow:
-      0 0 0 2px color-mix(in srgb, var(--signal) 80%, transparent),
-      0 16px 48px color-mix(in srgb, var(--signal) 42%, transparent);
-  }
+    radial-gradient(90% 140% at 0% 0%, color-mix(in srgb, var(--tldr) 28%, transparent), transparent 58%),
+    color-mix(in srgb, var(--tldr) 8%, var(--surface));
+  box-shadow: 0 10px 32px color-mix(in srgb, var(--tldr) 18%, transparent);
 }
 
 .tldr--bullish {
-  border-color: var(--gain);
-  background:
-    radial-gradient(120% 140% at 0% 0%, color-mix(in srgb, var(--gain) 32%, transparent), transparent 55%),
-    var(--mist);
+  --tldr: var(--gain);
 }
 
 .tldr--bearish {
-  border-color: var(--loss);
-  background:
-    radial-gradient(120% 140% at 0% 0%, color-mix(in srgb, var(--loss) 32%, transparent), transparent 55%),
-    var(--mist);
+  --tldr: var(--loss);
+}
+
+.tldr--stagnant {
+  --tldr: var(--signal);
+}
+
+.tldr__top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.55rem 0.75rem;
+  margin-bottom: 0.55rem;
 }
 
 .tldr__kicker {
-  margin: 0 0 0.35rem;
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: 1.05rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--signal);
-}
-
-.tldr--bullish .tldr__kicker {
-  color: var(--gain);
-}
-
-.tldr--bearish .tldr__kicker {
-  color: var(--loss);
-}
-
-.tldr__line {
   margin: 0;
-  font-size: clamp(1.15rem, 2.4vw, 1.55rem);
-  line-height: 1.35;
-  font-weight: 650;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 600;
+  font-size: 1.15rem;
+  letter-spacing: 0.02em;
+  color: var(--tldr);
 }
 
 .tldr__stance {
-  font-family: var(--font-display);
-  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.18rem 0.65rem 0.22rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--tldr) 22%, transparent);
+  border: 1px solid color-mix(in srgb, var(--tldr) 55%, transparent);
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 0.82rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-}
-
-.tldr--bullish .tldr__stance {
-  color: var(--gain);
-}
-
-.tldr--bearish .tldr__stance {
-  color: var(--loss);
-}
-
-.tldr--stagnant .tldr__stance {
-  color: var(--signal-ink);
+  color: var(--tldr);
 }
 
 .tldr__because {
-  color: var(--ink);
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: clamp(1.05rem, 2.1vw, 1.28rem);
+  font-weight: 500;
+  line-height: 1.45;
+  color: color-mix(in srgb, var(--ink) 92%, var(--tldr));
 }
 
 .tldr__action {
-  margin: 0.85rem 0 0;
-  padding: 0.7rem 0.8rem;
-  background: color-mix(in srgb, var(--signal) 22%, var(--fog));
-  border-left: 4px solid var(--signal);
-  font-size: clamp(1rem, 2vw, 1.2rem);
-  line-height: 1.4;
-  font-weight: 650;
+  margin: 0.8rem 0 0;
+  padding: 0.75rem 0.9rem;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--tldr) 14%, var(--fog));
+  border-left: 3px solid var(--tldr);
+  font-family: var(--font-serif);
+  font-size: clamp(1rem, 1.9vw, 1.18rem);
+  font-weight: 500;
+  line-height: 1.45;
   color: var(--ink);
 }
 
 .tldr__action-label {
   display: block;
-  margin-bottom: 0.25rem;
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.16em;
+  margin-bottom: 0.28rem;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--signal-ink);
-  font-weight: 600;
+  color: var(--tldr);
 }
 
 .tldr__meta {
-  margin: 0.55rem 0 0;
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  margin: 0.6rem 0 0;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
   color: var(--muted);
 }
 

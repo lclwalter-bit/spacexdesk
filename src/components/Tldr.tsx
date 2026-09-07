@@ -84,11 +84,11 @@ export function Tldr({ quote }: { quote: Quote | null }) {
       className={`tldr tldr--${stanceClass}`}
       aria-live="polite"
     >
-      <p className="tldr__kicker">TLDR</p>
-      <p className="tldr__line">
+      <div className="tldr__top">
+        <p className="tldr__kicker">TLDR</p>
         <span className="tldr__stance">{print.stance}</span>
-        <span className="tldr__because">, because {print.because}.</span>
-      </p>
+      </div>
+      <p className="tldr__because">Because {print.because}.</p>
       <p className="tldr__action">
         <span className="tldr__action-label">Next trade</span>
         {print.action}
