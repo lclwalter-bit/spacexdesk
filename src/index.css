@@ -31,11 +31,14 @@
 html {
   scroll-behavior: smooth;
   background: #000;
+  overflow-x: hidden;
 }
 
 body {
   margin: 0;
-  min-width: 320px;
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: hidden;
   color: var(--ink);
   background-color: #000;
   background-image:

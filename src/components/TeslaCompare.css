@@ -73,6 +73,8 @@
 
 .tesla__table-wrap {
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  max-width: 100%;
   border: 1px solid var(--line);
   margin-bottom: 0.75rem;
 }

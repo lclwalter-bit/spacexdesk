@@ -1,5 +1,7 @@
 .desk {
   min-height: 100vh;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 .nav {
@@ -50,6 +52,13 @@
   color: var(--ink);
 }
 
+.hero__copy,
+.hero__price,
+.hero__tldr {
+  min-width: 0;
+  max-width: 100%;
+}
+
 .hero__atmosphere {
   position: absolute;
   inset: 0;
@@ -96,7 +105,8 @@
 
 .hero__brand-wrap {
   position: relative;
-  display: inline-block;
+  display: block;
+  max-width: 100%;
   margin: 0;
 }
 
@@ -147,6 +157,7 @@
   font-size: 1.08rem;
   line-height: 1.45;
   font-weight: 500;
+  overflow-wrap: break-word;
   color: color-mix(in srgb, var(--ink) 92%, transparent);
 }
 
@@ -239,15 +250,64 @@ main {
 @media (max-width: 720px) {
   .nav {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
+    gap: 0.15rem;
+    padding: 0.45rem 0 0.2rem;
+  }
+  .nav__brand {
+    padding: 0 1rem 0.2rem;
+  }
+  .nav__links {
+    width: 100%;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    gap: 0.1rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 0 0.55rem 0.4rem;
+  }
+  .nav__links::-webkit-scrollbar {
+    display: none;
+  }
+  .nav__links a {
+    flex: 0 0 auto;
+    padding: 0.5rem 0.62rem;
+    font-size: 0.68rem;
+    letter-spacing: 0.04em;
+  }
+  .hero {
+    padding: 0.95rem 1rem 1.1rem;
   }
   .hero__inner {
     grid-template-columns: 1fr;
+    gap: 0.85rem;
   }
   .hero__orbit {
     display: none;
   }
   .hero__brand {
-    font-size: clamp(4.6rem, 24vw, 7.2rem);
+    font-size: clamp(2.8rem, 18vw, 4.6rem);
+    letter-spacing: -0.04em;
+    line-height: 0.9;
+  }
+  .hero__kicker {
+    letter-spacing: 0.12em;
+    font-size: 0.64rem;
+  }
+  .hero__line {
+    max-width: none;
+    font-size: 0.98rem;
+    margin: 0.55rem 0 0.75rem;
+  }
+  .hero__cta {
+    gap: 0.4rem;
+  }
+  .hero__cta a {
+    padding: 0.5rem 0.7rem;
+  }
+  main,
+  .footer {
+    width: min(1100px, calc(100% - 2rem));
   }
 }

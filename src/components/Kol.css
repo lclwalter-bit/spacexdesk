@@ -43,6 +43,7 @@
   font-size: clamp(0.95rem, 2vw, 1.1rem);
   line-height: 1.45;
   color: var(--ink);
+  overflow-wrap: break-word;
 }
 
 .kol-card__why {

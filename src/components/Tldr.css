@@ -66,6 +66,7 @@
   font-size: 1.02rem;
   font-weight: 500;
   line-height: 1.6;
+  overflow-wrap: break-word;
   color: color-mix(in srgb, var(--ink) 92%, var(--muted));
 }
 
@@ -112,4 +113,20 @@
 
 .hero__tldr .stance-legend {
   margin: 0.7rem 0 0;
+}
+
+@media (max-width: 720px) {
+  .tldr {
+    padding: 0.95rem 0.9rem 0.9rem;
+  }
+  .tldr__lede {
+    font-size: 0.95rem;
+  }
+  .tldr__trade-title {
+    font-size: 1.18rem;
+  }
+  .tldr__trade-body {
+    font-size: 0.9rem;
+    overflow-wrap: break-word;
+  }
 }

@@ -6,7 +6,10 @@
   background: color-mix(in srgb, var(--mist) 88%, transparent);
   color: var(--ink);
   border: 1px solid color-mix(in srgb, var(--ink) 18%, transparent);
+  border-radius: 12px;
   backdrop-filter: blur(10px);
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 .price-strip--loading,
@@ -73,8 +76,25 @@
 }
 
 @media (max-width: 720px) {
+  .price-strip {
+    padding: 0.75rem 0.8rem;
+  }
+  .price-strip__main {
+    gap: 0.3rem 0.65rem;
+  }
+  .price-strip__px {
+    font-size: 1.4rem;
+  }
   .price-strip__sess,
   .price-strip__src {
     margin-left: 0;
+  }
+  .price-strip__meta {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.3rem 0.65rem;
+  }
+  .price-strip__src {
+    grid-column: 1 / -1;
   }
 }
