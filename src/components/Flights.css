@@ -13,7 +13,7 @@
 }
 
 .flight.is-target {
-  border-left-color: var(--signal);
+  border-left-color: var(--ink);
 }
 
 .flight.is-done {
@@ -46,7 +46,7 @@
 }
 
 .flight.is-target .flight__status {
-  color: var(--signal-ink);
+  color: var(--ink);
 }
 
 .flight h3 {

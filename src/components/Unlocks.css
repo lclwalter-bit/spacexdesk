@@ -5,8 +5,9 @@
   align-items: center;
   padding: 0.7rem 1rem;
   margin-bottom: 0.75rem;
-  background: linear-gradient(120deg, color-mix(in srgb, var(--signal) 22%, var(--surface)), var(--surface));
-  border-left: 3px solid var(--signal);
+  background: var(--mist);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--ink);
 }
 
 .unlocks__next-copy {
@@ -61,7 +62,7 @@
 }
 
 .unlocks__table tr.is-next {
-  background: color-mix(in srgb, var(--signal) 12%, var(--surface));
+  background: color-mix(in srgb, var(--ink) 6%, var(--surface));
 }
 
 .unlocks__label {
@@ -94,8 +95,8 @@
 
 .pill--next {
   color: var(--ink);
-  border-color: var(--signal);
-  background: color-mix(in srgb, var(--signal) 22%, var(--surface));
+  border-color: var(--ink);
+  background: color-mix(in srgb, var(--ink) 10%, var(--surface));
 }
 
 .pill--upcoming {

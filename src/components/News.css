@@ -38,7 +38,8 @@
 }
 
 .news__body a:hover {
-  color: var(--signal-ink);
+  color: var(--ink);
+  text-decoration: underline;
 }
 
 .news__body p {

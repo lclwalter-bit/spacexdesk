@@ -26,7 +26,7 @@
   font-size: 0.68rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--signal-ink);
+  color: var(--muted);
   padding-top: 0.25rem;
 }
 
@@ -38,7 +38,8 @@
 }
 
 .presentations__list a:hover {
-  color: var(--signal-ink);
+  color: var(--ink);
+  text-decoration: underline;
 }
 
 .presentations__list time {
