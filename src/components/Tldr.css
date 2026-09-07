@@ -6,8 +6,8 @@
   margin: 0;
   padding: 1.15rem 1.3rem 1.05rem;
   border-radius: 12px;
-  border: 1px solid color-mix(in srgb, var(--tldr) 55%, var(--line));
-  background: color-mix(in srgb, var(--tldr) 7%, var(--surface));
+  border: 1px solid var(--line);
+  background: var(--mist);
 }
 
 .tldr--bullish {
@@ -30,7 +30,7 @@
   gap: 0.5rem 1rem;
   margin-bottom: 0.85rem;
   padding-bottom: 0.7rem;
-  border-bottom: 1px solid color-mix(in srgb, var(--tldr) 28%, var(--line));
+  border-bottom: 1px solid var(--line);
 }
 
 .tldr__kicker {
@@ -72,7 +72,7 @@
 .tldr__trade {
   margin: 1.05rem 0 0;
   padding-top: 0.9rem;
-  border-top: 1px solid color-mix(in srgb, var(--tldr) 28%, var(--line));
+  border-top: 1px solid var(--line);
 }
 
 .tldr__trade-title {
@@ -82,7 +82,7 @@
   font-size: clamp(1.28rem, 2.4vw, 1.55rem);
   letter-spacing: -0.02em;
   line-height: 1.15;
-  color: var(--tldr);
+  color: var(--ink);
 }
 
 .tldr__trade-body {
