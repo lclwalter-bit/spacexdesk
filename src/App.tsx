@@ -20,7 +20,7 @@ const NAV = [
   { href: '#tesla', label: 'vs TSLA' },
   { href: '#shareholder', label: 'Equity' },
   { href: '#flights', label: 'Flights' },
-  { href: '#kol', label: 'Elon / KOL' },
+  { href: '#influence', label: 'Influence' },
   { href: '#news', label: 'News' },
   { href: '#presentations', label: 'Docs' },
 ]
@@ -48,10 +48,13 @@ export default function App() {
         <div className="hero__atmosphere" aria-hidden />
         <div className="hero__inner">
           <div className="hero__copy">
-            <p className="hero__kicker">SpaceX public equity · trader desk</p>
-            <h1 className="hero__brand">SPCX</h1>
+            <p className="hero__kicker">SpaceX public equity</p>
+            <div className="hero__brand-wrap">
+              <span className="hero__orbit" aria-hidden />
+              <h1 className="hero__brand">SPCX</h1>
+            </div>
             <p className="hero__line">
-              Live Yahoo tape, unlock cliffs, ops, and primary Musk / KOL signal.
+              Your key desk for everything to do with investing in SPCX.
             </p>
             <div className="hero__cta">
               <a href="#unlocks">Next unlock</a>

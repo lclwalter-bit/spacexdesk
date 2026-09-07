@@ -4,13 +4,13 @@ import './Kol.css'
 
 export function Kol() {
   return (
-    <section id="kol" className="section kol">
+    <section id="influence" className="section kol">
       <header className="section__head">
-        <p className="eyebrow">Primary signal</p>
-        <h2>Elon & KOL posts</h2>
+        <p className="eyebrow">Voices</p>
+        <h2>Influence</h2>
         <p className="section__lede">
-          Musk primary first, then ops voices. Wire paraphrase marked when primary
-          text is incomplete.
+          Musk first, then ops. Wire paraphrase marked when the primary text is
+          incomplete.
         </p>
       </header>
 

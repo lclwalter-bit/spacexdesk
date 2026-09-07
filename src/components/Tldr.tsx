@@ -8,6 +8,7 @@ import {
   sessionDate,
 } from '../lib/nyTime'
 import type { Quote } from '../lib/yahoo'
+import { StanceMark } from './StanceMark'
 import './Tldr.css'
 
 const STORAGE_KEY = 'spcx-tldr-print-v2'
@@ -86,7 +87,10 @@ export function Tldr({ quote }: { quote: Quote | null }) {
     >
       <div className="tldr__top">
         <p className="tldr__kicker">TLDR</p>
-        <span className="tldr__stance">{print.stance}</span>
+        <span className="tldr__stance">
+          <StanceMark stance={print.stance} />
+          {print.stance}
+        </span>
       </div>
       <p className="tldr__because">Because {print.because}.</p>
       <p className="tldr__action">
