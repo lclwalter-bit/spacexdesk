@@ -15,6 +15,13 @@ Production (static + Yahoo proxy):
 npm run serve        # build + http://localhost:4173
 ```
 
+Cloudflare (custom domain):
+
+```bash
+export CLOUDFLARE_API_TOKEN=...   # do not commit
+npm run deploy                    # https://theverybestlikenooneeverwas.com
+```
+
 ## Data
 
 Curated under `src/data/` — update unlocks, flights, KOL quotes, and news as new primaries land. Price always comes from Yahoo Finance via `/api/yahoo`.
