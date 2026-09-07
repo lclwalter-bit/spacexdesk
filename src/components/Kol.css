@@ -5,7 +5,7 @@
 
 .kol-card {
   display: grid;
-  grid-template-columns: 1.55rem 1fr;
+  grid-template-columns: 1.7rem 1fr;
   gap: 0.7rem;
   align-items: start;
   padding: 0.7rem 0;

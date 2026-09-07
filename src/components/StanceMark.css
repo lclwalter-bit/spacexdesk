@@ -4,8 +4,8 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  width: 1.55rem;
-  height: 1.55rem;
+  width: 1.7rem;
+  height: 1.7rem;
   border-radius: 50%;
   color: var(--stance);
   background: color-mix(in srgb, var(--stance) 16%, transparent);
@@ -25,18 +25,18 @@
 
 .stance-mark svg {
   display: block;
-  width: 0.95rem;
-  height: 0.95rem;
+  width: 1.05rem;
+  height: 1.05rem;
 }
 
 .stance-mark--sm {
-  width: 1.3rem;
-  height: 1.3rem;
+  width: 1.4rem;
+  height: 1.4rem;
 }
 
 .stance-mark--sm svg {
-  width: 0.82rem;
-  height: 0.82rem;
+  width: 0.92rem;
+  height: 0.92rem;
 }
 
 .stance-row {
