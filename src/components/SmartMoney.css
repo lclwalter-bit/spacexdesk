@@ -1,0 +1,143 @@
+.street__stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  margin-bottom: 0.55rem;
+}
+
+.street__stats > div {
+  background: var(--surface);
+  padding: 0.7rem 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.street__stats span {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.street__stats strong {
+  font-family: var(--font-mono);
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.street__stats .is-up {
+  color: var(--gain);
+}
+
+.street__stats .is-down {
+  color: var(--loss);
+}
+
+.street__poll {
+  margin: 0 0 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--muted);
+}
+
+.street__table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  max-width: 100%;
+  border: 1px solid var(--line);
+}
+
+.street__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+}
+
+.street__table th {
+  text-align: left;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid var(--line);
+  background: var(--mist);
+}
+
+.street__table td {
+  padding: 0.55rem 0.75rem;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+}
+
+.street__stance {
+  width: 2.1rem;
+  padding-right: 0 !important;
+}
+
+.street__firm {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 0.25rem;
+}
+
+.street__note {
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  color: var(--muted);
+  max-width: 36rem;
+  line-height: 1.45;
+}
+
+.street__note a {
+  color: var(--ink);
+}
+
+.street__px {
+  white-space: nowrap;
+}
+
+.street__prior {
+  display: block;
+  margin-top: 0.15rem;
+  font-size: 0.7rem;
+  color: var(--muted);
+}
+
+.street__table .is-up {
+  color: var(--gain);
+  white-space: nowrap;
+}
+
+.street__table .is-down {
+  color: var(--loss);
+  white-space: nowrap;
+}
+
+.street__table .is-flat {
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+@media (max-width: 900px) {
+  .street__stats {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .street__stats {
+    grid-template-columns: 1fr;
+  }
+  .street__stats strong {
+    font-size: 1.1rem;
+  }
+}

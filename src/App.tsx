@@ -8,6 +8,7 @@ import { Kol } from './components/Kol'
 import { News } from './components/News'
 import { Presentations } from './components/Presentations'
 import { TeslaCompare } from './components/TeslaCompare'
+import { SmartMoney } from './components/SmartMoney'
 import { Tldr } from './components/Tldr'
 import { StanceLegend } from './components/StanceMark'
 import type { Quote } from './lib/yahoo'
@@ -17,6 +18,7 @@ const NAV = [
   { href: '#tldr', label: 'TLDR' },
   { href: '#tape', label: 'Tape' },
   { href: '#unlocks', label: 'Unlocks' },
+  { href: '#street', label: 'Street' },
   { href: '#tesla', label: 'vs TSLA' },
   { href: '#shareholder', label: 'Equity' },
   { href: '#flights', label: 'Flights' },
@@ -90,6 +92,7 @@ export default function App() {
         </section>
 
         <Unlocks price={quote?.price ?? null} />
+        <SmartMoney price={quote?.price ?? null} />
         <TeslaCompare price={quote?.price ?? null} />
         <Shareholder price={quote?.price ?? null} />
         <Flights />
@@ -101,8 +104,9 @@ export default function App() {
       <footer className="footer">
         <p>
           Not investment advice. Unlock sizes from prospectus tracking; Tesla
-          analogs are event maps, not price targets. Flight 14 NET dates slip.
-          Yahoo delayed/extended data via proxy.
+          analogs are event maps, not price targets. Street marks are 12-month
+          house targets versus the live tape, not a recommendation. Flight 14
+          NET dates slip. Yahoo delayed/extended data via proxy.
         </p>
         <p>SPCX Desk · built for Walter’s SpaceX trading workflow</p>
       </footer>
