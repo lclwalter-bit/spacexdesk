@@ -8,14 +8,14 @@
 
 .starship-flyby__craft {
   position: absolute;
-  right: -2.5rem;
-  bottom: -7rem;
-  width: 2.35rem;
+  right: -3.2rem;
+  bottom: -6.5rem;
+  width: 4.1rem;
   opacity: 0;
   transform: translate(0, 0) rotate(-48deg);
   transform-origin: 50% 50%;
   will-change: transform, opacity;
-  filter: drop-shadow(0 0 0.6px rgba(255, 255, 255, 0.35));
+  filter: drop-shadow(0 0 0.6px rgba(255, 255, 255, 0.28));
   animation: starship-climb 16s cubic-bezier(0.4, 0.02, 0.72, 0.28) forwards;
 }
 
@@ -27,7 +27,7 @@
 }
 
 .starship-flyby__plume {
-  transform-origin: 20px 198px;
+  transform-origin: 50px 148px;
   animation: starship-plume 0.28s ease-in-out infinite alternate;
 }
 
@@ -61,9 +61,9 @@
 
 @media (max-width: 720px) {
   .starship-flyby__craft {
-    width: 1.75rem;
-    right: -1.8rem;
-    bottom: -5.5rem;
+    width: 3.1rem;
+    right: -2.4rem;
+    bottom: -5.2rem;
   }
 }
 
