@@ -4,103 +4,126 @@ import './StarshipFlyby.css'
 const FIRST_PASS_MS = 8_000
 const EVERY_MS = 60_000
 
-/** Starship spacecraft (upper stage) — stainless cylinder, black nose, canards + aft flaps. */
+/**
+ * Full stack from spacex.com/vehicles/starship:
+ * Starship (black tip, canards, aft flaps) on Super Heavy
+ * (hot-stage vents, grid fins, long booster, Raptor skirt).
+ */
 function StarshipMark() {
+  const cx = 40
+  const left = 31
+  const vents = Array.from({ length: 8 }, (_, i) => {
+    const x = left + 1.4 + i * 2.15
+    return `${x},121 ${x + 1.05},124.5 ${x},128 ${x - 1.05},124.5`
+  })
+
   return (
-    <svg viewBox="0 0 100 168" aria-hidden="true">
+    <svg viewBox="0 0 80 300" aria-hidden="true">
       <defs>
         <linearGradient id="starship-steel" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%" stopColor="#8d8d8d" />
-          <stop offset="22%" stopColor="#dedede" />
-          <stop offset="46%" stopColor="#ffffff" />
-          <stop offset="70%" stopColor="#cfcfcf" />
-          <stop offset="100%" stopColor="#8f8f8f" />
-        </linearGradient>
-        <linearGradient id="starship-tps" x1="0" y1="1" x2="0" y2="0">
-          <stop offset="0%" stopColor="#2b2b2b" />
-          <stop offset="55%" stopColor="#141414" />
-          <stop offset="100%" stopColor="#0a0a0a" />
+          <stop offset="0%" stopColor="#4a4a4a" />
+          <stop offset="16%" stopColor="#b7b7b7" />
+          <stop offset="38%" stopColor="#ffffff" />
+          <stop offset="55%" stopColor="#e4e4e4" />
+          <stop offset="82%" stopColor="#8a8a8a" />
+          <stop offset="100%" stopColor="#2e2e2e" />
         </linearGradient>
         <linearGradient id="starship-plume" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#fff" stopOpacity="0.5" />
+          <stop offset="0%" stopColor="#fff" stopOpacity="0.42" />
           <stop offset="100%" stopColor="#fff" stopOpacity="0" />
         </linearGradient>
+        <pattern
+          id="starship-gridfin"
+          width="2.2"
+          height="2.2"
+          patternUnits="userSpaceOnUse"
+        >
+          <rect width="2.2" height="2.2" fill="#2a2a2a" />
+          <path
+            d="M0 0h2.2M0 2.2h2.2M0 0v2.2M2.2 0v2.2"
+            stroke="#8a8a8a"
+            strokeWidth="0.35"
+            fill="none"
+          />
+        </pattern>
       </defs>
 
       <g className="starship-flyby__plume">
-        <ellipse cx="50" cy="154" rx="9" ry="18" fill="url(#starship-plume)" />
-        <ellipse cx="50" cy="146" rx="4" ry="9" fill="#fff" opacity="0.2" />
+        <ellipse cx={cx} cy="288" rx="8" ry="16" fill="url(#starship-plume)" />
+        <ellipse cx={cx} cy="280" rx="3.6" ry="8" fill="#fff" opacity="0.18" />
       </g>
 
-      {/* Aft flaps — the big landing fins */}
-      <path
-        fill="url(#starship-steel)"
-        d="M39 104 L10 98 L6 136 L39 138 Z"
-      />
-      <path
-        fill="url(#starship-steel)"
-        d="M61 104 L90 98 L94 136 L61 138 Z"
-      />
-      <path fill="#4a4a4a" opacity="0.45" d="M39 104 L10 98 L8 112 L39 118 Z" />
-      <path fill="#efefef" opacity="0.35" d="M61 104 L90 98 L92 112 L61 118 Z" />
+      {/* Super Heavy — long stainless booster */}
+      <rect x={left} y="128" width="18" height="146" fill="url(#starship-steel)" />
+      {/* chines / raceway */}
+      <rect x="33.4" y="214" width="1.1" height="54" fill="#5a5a5a" opacity="0.55" />
+      <rect x="45.6" y="214" width="0.9" height="54" fill="#d8d8d8" opacity="0.35" />
 
-      {/* Stainless body + nose */}
-      <path
-        fill="url(#starship-steel)"
-        d="M50 6
-           C62 22 63.5 34 63.5 44
-           L63.5 136
-           Q50 141 36.5 136
-           L36.5 44
-           C36.5 34 38 22 50 6 Z"
+      {/* Grid fins, just below the hot-stage ring */}
+      <rect
+        x="19.5"
+        y="132"
+        width="11.5"
+        height="9"
+        rx="0.4"
+        fill="url(#starship-gridfin)"
       />
-
-      {/* Windward tiles — thin dark edge, not a black hull */}
-      <path
-        fill="#3a3a3a"
-        opacity="0.28"
-        d="M36.5 44 L40.5 44 L40.5 136 Q38 137.5 36.5 136 Z"
+      <rect
+        x="49"
+        y="132"
+        width="11.5"
+        height="9"
+        rx="0.4"
+        fill="url(#starship-gridfin)"
       />
 
-      {/* Black nose cone */}
+      {/* Hot-stage ring — diamond vents */}
+      <rect x={left} y="119" width="18" height="10" fill="url(#starship-steel)" />
+      <rect x={left} y="119" width="18" height="10" fill="#cfcfcf" opacity="0.35" />
+      {vents.map((points) => (
+        <polygon key={points} points={points} fill="#161616" />
+      ))}
+
+      {/* Starship spacecraft */}
       <path
-        fill="url(#starship-tps)"
-        d="M50 6
-           C62 22 63.5 34 63.5 44
-           L36.5 44
-           C36.5 34 38 22 50 6 Z"
+        fill="url(#starship-steel)"
+        d={`M${cx} 8
+           C52 22 49 32 49 40
+           L49 120
+           L31 120
+           L31 40
+           C31 32 28 22 ${cx} 8 Z`}
       />
+
+      {/* Black nose tip only */}
       <path
-        fill="#0d0d0d"
-        d="M50 6 C44 16 38.5 30 37.2 44 L50 44 Z"
-        opacity="0.85"
+        fill="#111"
+        d={`M${cx} 8
+           C46.5 16 48.2 24 48.6 30
+           L31.4 30
+           C31.8 24 33.5 16 ${cx} 8 Z`}
       />
 
       {/* Forward flaps — small canards under the nose */}
-      <path
-        fill="url(#starship-steel)"
-        d="M36.5 48 L14 46 L12 60 L36.5 62 Z"
-      />
-      <path
-        fill="url(#starship-steel)"
-        d="M63.5 48 L86 46 L88 60 L63.5 62 Z"
-      />
-      <path fill="#3a3a3a" opacity="0.4" d="M36.5 48 L14 46 L15 52 L36.5 54 Z" />
+      <path fill="url(#starship-steel)" d="M31 34 L16 30 L14 42 L31 44 Z" />
+      <path fill="url(#starship-steel)" d="M49 34 L64 30 L66 42 L49 44 Z" />
 
-      {/* Window belt */}
-      <rect x="51.5" y="50" width="3.4" height="2" rx="0.4" fill="#1a1a1a" opacity="0.7" />
-      <rect x="51.8" y="58" width="2.8" height="1.5" rx="0.35" fill="#1a1a1a" opacity="0.45" />
-      <rect x="51.8" y="66" width="2.8" height="1.5" rx="0.35" fill="#1a1a1a" opacity="0.35" />
+      {/* Aft flaps — large shark fins at the base of the ship */}
+      <path fill="url(#starship-steel)" d="M31 92 L9 88 L6 122 L31 120 Z" />
+      <path fill="url(#starship-steel)" d="M49 92 L71 88 L74 122 L49 120 Z" />
+      <path fill="#3f3f3f" opacity="0.28" d="M31 92 L9 88 L8 98 L31 102 Z" />
 
-      {/* Six Raptors as a tight cluster of bells */}
-      <g fill="#4a4a4a">
-        <ellipse cx="43" cy="138.5" rx="3.1" ry="2.4" />
-        <ellipse cx="50" cy="139.4" rx="3.4" ry="2.6" />
-        <ellipse cx="57" cy="138.5" rx="3.1" ry="2.4" />
-        <ellipse cx="46.2" cy="136.6" rx="2.2" ry="1.6" opacity="0.8" />
-        <ellipse cx="53.8" cy="136.6" rx="2.2" ry="1.6" opacity="0.8" />
-        <ellipse cx="50" cy="135.6" rx="2" ry="1.4" opacity="0.7" />
-      </g>
+      {/* 33-Raptor skirt */}
+      <path fill="#1a1a1a" d="M31 272 L28.5 282 L51.5 282 L49 272 Z" />
+      {Array.from({ length: 11 }, (_, i) => (
+        <circle
+          key={i}
+          cx={31.8 + i * 1.6}
+          cy={276.5 + (i % 2) * 2.2}
+          r="1.05"
+          fill="#3a3a3a"
+        />
+      ))}
     </svg>
   )
 }
