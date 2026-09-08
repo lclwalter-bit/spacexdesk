@@ -82,11 +82,11 @@ export default function App() {
             <p className="eyebrow">Market</p>
             <h2>Price & extended hours</h2>
             <p className="section__lede">
-              Yahoo candles with <code>includePrePost=true</code>. Quote 20s ·
-              chart 60s.
+              Yahoo candles with <code>includePrePost=true</code>. Strip and
+              chart share the last tape print · 20s.
             </p>
           </header>
-          <PriceChart />
+          <PriceChart livePrice={quote?.price ?? null} />
         </section>
 
         <Unlocks price={quote?.price ?? null} />

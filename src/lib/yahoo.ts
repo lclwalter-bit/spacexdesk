@@ -27,6 +27,80 @@ function apiBase() {
   return '/api/yahoo'
 }
 
+function lastFinite(values: Array<number | null | undefined> | undefined): number | null {
+  if (!values) return null
+  for (let i = values.length - 1; i >= 0; i--) {
+    const v = values[i]
+    if (v != null && Number.isFinite(Number(v))) return Number(v)
+  }
+  return null
+}
+
+type YahooMeta = {
+  symbol?: string
+  marketState?: string
+  regularMarketPrice?: number | null
+  preMarketPrice?: number | null
+  postMarketPrice?: number | null
+  chartPreviousClose?: number | null
+  previousClose?: number | null
+  regularMarketOpen?: number | null
+  regularMarketDayHigh?: number | null
+  regularMarketDayLow?: number | null
+  regularMarketVolume?: number | null
+  currency?: string
+  exchangeName?: string
+  regularMarketTime?: number | null
+}
+
+function liveTapePrice(meta: YahooMeta, lastBarClose: number | null): number {
+  const state = String(meta.marketState ?? '').toUpperCase()
+  const pre = meta.preMarketPrice != null ? Number(meta.preMarketPrice) : null
+  const post = meta.postMarketPrice != null ? Number(meta.postMarketPrice) : null
+  const rth = meta.regularMarketPrice != null ? Number(meta.regularMarketPrice) : null
+  const prev = Number(meta.chartPreviousClose ?? meta.previousClose)
+
+  const raw =
+    lastBarClose ??
+    (state.includes('PRE') && pre != null
+      ? pre
+      : (state.includes('POST') || state.includes('AFTER')) && post != null
+        ? post
+        : (rth ?? pre ?? post ?? prev))
+  return Math.round(Number(raw) * 100) / 100
+}
+
+function changeBasis(meta: YahooMeta, live: number): number {
+  const state = String(meta.marketState ?? '').toUpperCase()
+  const rth = meta.regularMarketPrice != null ? Number(meta.regularMarketPrice) : null
+  const prev = Number(meta.chartPreviousClose ?? meta.previousClose)
+  const vsLastRth =
+    state.includes('PRE') ||
+    state.includes('POST') ||
+    state.includes('AFTER') ||
+    state.includes('CLOSED')
+  if (vsLastRth && rth != null && Number.isFinite(rth) && Math.abs(rth - live) > 0.0001) {
+    return rth
+  }
+  return prev
+}
+
+/** Keep the last candle on the live tape so the chart last-value matches the quote. */
+export function patchLastCandle(rows: Candle[], livePrice?: number | null): Candle[] {
+  if (livePrice == null || !rows.length || !Number.isFinite(livePrice)) return rows
+  const px = Math.round(livePrice * 100) / 100
+  const last = rows[rows.length - 1]
+  if (Math.abs(last.close - px) < 0.0005) return rows
+  const next = rows.slice()
+  next[next.length - 1] = {
+    ...last,
+    close: px,
+    high: Math.max(last.high, px),
+    low: Math.min(last.low, px),
+  }
+  return next
+}
+
 export async function fetchQuote(symbol = 'SPCX'): Promise<Quote> {
   const url = `${apiBase()}/v8/finance/chart/${encodeURIComponent(symbol)}?interval=1m&range=1d&includePrePost=true`
   const res = await fetch(url)
@@ -34,16 +108,13 @@ export async function fetchQuote(symbol = 'SPCX'): Promise<Quote> {
   const json = await res.json()
   const result = json?.chart?.result?.[0]
   if (!result) throw new Error('no chart result')
-  const meta = result.meta
-  const price =
-    meta.regularMarketPrice ??
-    meta.postMarketPrice ??
-    meta.preMarketPrice ??
-    meta.chartPreviousClose
+  const meta = (result.meta ?? {}) as YahooMeta
+  const lastBarClose = lastFinite(result.indicators?.quote?.[0]?.close)
+  const price = liveTapePrice(meta, lastBarClose)
   return {
-    symbol: meta.symbol,
-    price: Number(price),
-    previousClose: Number(meta.chartPreviousClose ?? meta.previousClose),
+    symbol: meta.symbol ?? symbol,
+    price,
+    previousClose: changeBasis(meta, price),
     open: meta.regularMarketOpen ?? null,
     dayHigh: meta.regularMarketDayHigh ?? null,
     dayLow: meta.regularMarketDayLow ?? null,

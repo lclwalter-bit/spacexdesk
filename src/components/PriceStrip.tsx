@@ -75,7 +75,9 @@ export function PriceStrip({ onQuote }: { onQuote?: (q: Quote) => void }) {
           </span>
         )}
         {q.volume != null && <span>Vol {q.volume.toLocaleString()}</span>}
-        {ext != null && <span>Ext {fmtMoney(ext)}</span>}
+        {ext != null && Math.abs(ext - q.price) >= 0.005 && (
+          <span>Ext {fmtMoney(ext)}</span>
+        )}
         {nvda != null && <span>NVDA {fmtMoney(nvda)}</span>}
         <span className="price-strip__src">Yahoo · 20s poll · pre/post included</span>
       </div>
