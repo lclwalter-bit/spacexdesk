@@ -19,7 +19,7 @@ Cloudflare (custom domain):
 
 ```bash
 export CLOUDFLARE_API_TOKEN=...   # do not commit
-npm run deploy                    # https://theverybestlikenooneeverwas.com
+npm run deploy                    # https://spcx.nexus
 ```
 
 ## Data

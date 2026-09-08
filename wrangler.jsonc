@@ -13,8 +13,8 @@
     "run_worker_first": ["/api/*"]
   },
   "routes": [
-    { "pattern": "theverybestlikenooneeverwas.com", "custom_domain": true },
-    { "pattern": "www.theverybestlikenooneeverwas.com", "custom_domain": true }
+    { "pattern": "spcx.nexus", "custom_domain": true },
+    { "pattern": "www.spcx.nexus", "custom_domain": true }
   ],
   "observability": {
     "enabled": true
