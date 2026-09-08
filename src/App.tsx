@@ -11,6 +11,7 @@ import { TeslaCompare } from './components/TeslaCompare'
 import { SmartMoney } from './components/SmartMoney'
 import { Tldr } from './components/Tldr'
 import { StanceLegend } from './components/StanceMark'
+import { StarshipFlyby } from './components/StarshipFlyby'
 import type { Quote } from './lib/yahoo'
 import './App.css'
 
@@ -32,8 +33,10 @@ export default function App() {
   const onQuote = useCallback((q: Quote) => setQuote(q), [])
 
   return (
-    <div className="desk">
-      <nav className="nav">
+    <>
+      <StarshipFlyby />
+      <div className="desk">
+        <nav className="nav">
         <a className="nav__brand" href="#top">
           SPCX Desk
         </a>
@@ -111,5 +114,6 @@ export default function App() {
         <p>SPCX Desk · built for Walter’s SpaceX trading workflow</p>
       </footer>
     </div>
+    </>
   )
 }
