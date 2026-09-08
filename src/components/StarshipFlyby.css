@@ -8,8 +8,8 @@
 
 .starship-flyby__craft {
   position: absolute;
-  right: -2.8rem;
-  bottom: -16rem;
+  right: -1.2rem;
+  bottom: -2.8rem;
   width: 3.4rem;
   opacity: 0;
   transform: translate(0, 0) rotate(-48deg);
@@ -62,8 +62,8 @@
 @media (max-width: 720px) {
   .starship-flyby__craft {
     width: 2.55rem;
-    right: -2rem;
-    bottom: -12rem;
+    right: -0.8rem;
+    bottom: -2.2rem;
   }
 }
 
