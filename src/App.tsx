@@ -112,7 +112,7 @@ export default function App() {
           NET dates slip. Yahoo delayed/extended data via proxy.
         </p>
         <p>
-          SPCX Nexus · built for Walter’s SpaceX trading workflow ·{' '}
+          SPCX Nexus · built for investors of SpaceX ·{' '}
           <a href="https://cursor.com" target="_blank" rel="noreferrer">
             Powered by Cursor
           </a>
