@@ -1,4 +1,4 @@
-# SPCX Desk
+# SPCX Nexus
 
 Trader hub for SpaceX public equity (`SPCX`): live Yahoo tape (RTH + pre/post), unlock cliffs, shareholder value, flight schedule, Elon/KOL primaries, news, and filings.
 

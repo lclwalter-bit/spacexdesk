@@ -15,7 +15,7 @@ app.get(/^\/api\/yahoo(\/.*)?$/, async (req, res) => {
     const url = `https://query1.finance.yahoo.com${yahooPath}${qs}`
     const upstream = await fetch(url, {
       headers: {
-        'User-Agent': 'Mozilla/5.0 (compatible; SPCXDesk/1.0)',
+        'User-Agent': 'Mozilla/5.0 (compatible; SPCXNexus/1.0)',
         Accept: 'application/json',
       },
     })
@@ -37,5 +37,5 @@ if (existsSync(dist)) {
 }
 
 app.listen(PORT, () => {
-  console.log(`SPCX Desk listening on http://localhost:${PORT}`)
+  console.log(`SPCX Nexus listening on http://localhost:${PORT}`)
 })

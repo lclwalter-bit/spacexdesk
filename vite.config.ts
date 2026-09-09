@@ -11,7 +11,7 @@ export default defineConfig({
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api\/yahoo/, ''),
         headers: {
-          'User-Agent': 'Mozilla/5.0 (compatible; SPCXDesk/1.0)',
+          'User-Agent': 'Mozilla/5.0 (compatible; SPCXNexus/1.0)',
         },
       },
     },

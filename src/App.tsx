@@ -38,7 +38,7 @@ export default function App() {
       <div className="desk">
         <nav className="nav">
         <a className="nav__brand" href="#top">
-          SPCX Desk
+          SPCX Nexus
         </a>
         <div className="nav__links">
           {NAV.map((n) => (
@@ -111,7 +111,7 @@ export default function App() {
           house targets versus the live tape, not a recommendation. Flight 14
           NET dates slip. Yahoo delayed/extended data via proxy.
         </p>
-        <p>SPCX Desk · built for Walter’s SpaceX trading workflow</p>
+        <p>SPCX Nexus · built for Walter’s SpaceX trading workflow</p>
       </footer>
     </div>
     </>

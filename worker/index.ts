@@ -10,7 +10,7 @@ export default {
       `https://query1.finance.yahoo.com${yahooPath}${url.search}`,
       {
         headers: {
-          'User-Agent': 'Mozilla/5.0 (compatible; SPCXDesk/1.0)',
+          'User-Agent': 'Mozilla/5.0 (compatible; SPCXNexus/1.0)',
           Accept: 'application/json',
         },
       },
