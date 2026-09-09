@@ -1,0 +1,73 @@
+.starship-flyby {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.starship-flyby__craft {
+  position: absolute;
+  right: 0.35rem;
+  bottom: 1.5rem;
+  width: 3.4rem;
+  opacity: 0;
+  transform: translate(0, 0) rotate(-48deg);
+  transform-origin: 50% 50%;
+  will-change: transform, opacity;
+  filter: drop-shadow(0 0 0.5px rgba(255, 255, 255, 0.25));
+  animation: starship-climb 16s cubic-bezier(0.4, 0.02, 0.72, 0.28) forwards;
+}
+
+.starship-flyby__craft svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.starship-flyby__plume {
+  transform-origin: 40px 282px;
+  animation: starship-plume 0.28s ease-in-out infinite alternate;
+}
+
+@keyframes starship-climb {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) rotate(-48deg);
+  }
+  7% {
+    opacity: 0.46;
+  }
+  82% {
+    opacity: 0.28;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(calc(-100vw - 6rem), calc(-100vh - 14rem)) rotate(-48deg);
+  }
+}
+
+@keyframes starship-plume {
+  from {
+    opacity: 0.55;
+    transform: scaleY(0.88);
+  }
+  to {
+    opacity: 1;
+    transform: scaleY(1.18);
+  }
+}
+
+@media (max-width: 720px) {
+  .starship-flyby__craft {
+    width: 2.55rem;
+    right: 0.2rem;
+    bottom: 1.1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .starship-flyby {
+    display: none;
+  }
+}
