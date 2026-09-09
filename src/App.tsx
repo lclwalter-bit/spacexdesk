@@ -111,7 +111,12 @@ export default function App() {
           house targets versus the live tape, not a recommendation. Flight 14
           NET dates slip. Yahoo delayed/extended data via proxy.
         </p>
-        <p>SPCX Nexus · built for Walter’s SpaceX trading workflow</p>
+        <p>
+          SPCX Nexus · built for Walter’s SpaceX trading workflow ·{' '}
+          <a href="https://cursor.com" target="_blank" rel="noreferrer">
+            Powered by Cursor
+          </a>
+        </p>
       </footer>
     </div>
     </>
