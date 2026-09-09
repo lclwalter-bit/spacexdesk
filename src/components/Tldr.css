@@ -161,6 +161,15 @@
   color: color-mix(in srgb, var(--muted) 85%, var(--ink));
 }
 
+.tldr__nfa {
+  margin: 0.45rem 0 0;
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: color-mix(in srgb, var(--muted) 72%, transparent);
+}
+
 .hero__tldr {
   position: relative;
   z-index: 1;
@@ -169,7 +178,7 @@
 }
 
 .hero__tldr .stance-legend {
-  margin: 0.7rem 0 0;
+  margin: 0.55rem 0 0;
 }
 
 @media (max-width: 720px) {

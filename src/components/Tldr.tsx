@@ -83,6 +83,7 @@ export function Tldr({ quote }: { quote: Quote | null }) {
   const stanceClass = print.stance.toLowerCase() as Lowercase<Stance>
 
   return (
+    <>
     <section
       id="tldr"
       className={`tldr tldr--${stanceClass}`}
@@ -144,5 +145,7 @@ export function Tldr({ quote }: { quote: Quote | null }) {
           : `RTH prep print · ${print.session} 9:20 ET · next ${prepLabel}`}
       </p>
     </section>
+    <p className="tldr__nfa">Not Financial Advice</p>
+    </>
   )
 }
