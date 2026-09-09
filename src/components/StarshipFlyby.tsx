@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import './StarshipFlyby.css'
 
-const FIRST_PASS_MS = 8_000
+const FIRST_PASS_MS = 2_000
 const EVERY_MS = 60_000
 
 /**
