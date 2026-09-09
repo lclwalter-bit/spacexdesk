@@ -7,7 +7,8 @@ import {
   nyClock,
   sessionDate,
 } from '../lib/nyTime'
-import type { Quote } from '../lib/yahoo'
+import { fmtMoney, type Quote } from '../lib/yahoo'
+import { bagDeployed, bagHeadline, bagLadder } from '../data/bag'
 import { StanceMark } from './StanceMark'
 import './Tldr.css'
 
@@ -98,6 +99,44 @@ export function Tldr({ quote }: { quote: Quote | null }) {
       <div className="tldr__trade">
         <h3 className="tldr__trade-title">Next trade</h3>
         <p className="tldr__trade-body">{print.action}</p>
+      </div>
+      <div className="tldr__bag">
+        <h3 className="tldr__trade-title">Buy in</h3>
+        <p className="tldr__trade-body">{bagHeadline(quote?.price ?? null)}</p>
+        <ul className="tldr__bag-list">
+          {bagLadder.map((rung) => {
+            const last = quote?.price ?? null
+            const hit = last != null && last <= rung.price
+            const active = bagDeployed(last) === rung.pct && hit
+            const vs =
+              last != null ? ((last - rung.price) / rung.price) * 100 : null
+            return (
+              <li
+                key={rung.price}
+                className={
+                  active ? 'is-active' : hit ? 'is-hit' : undefined
+                }
+              >
+                <StanceMark stance={rung.stance} size="sm" />
+                <div className="tldr__bag-copy">
+                  <strong>
+                    {fmtMoney(rung.price, 0)} · {rung.pct}% · {rung.label}
+                  </strong>
+                  <span>
+                    {rung.note}
+                    {vs != null && (
+                      <>
+                        {' '}
+                        · tape {vs >= 0 ? '+' : ''}
+                        {vs.toFixed(1)}% vs this print
+                      </>
+                    )}
+                  </span>
+                </div>
+              </li>
+            )
+          })}
+        </ul>
       </div>
       <p className="tldr__meta">
         {print.preview

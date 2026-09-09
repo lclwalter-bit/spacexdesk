@@ -96,6 +96,63 @@
   color: var(--muted);
 }
 
+.tldr__bag {
+  margin: 1.05rem 0 0;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--line);
+}
+
+.tldr__bag .tldr__trade-body {
+  margin-bottom: 0.75rem;
+}
+
+.tldr__bag-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.tldr__bag-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+  padding: 0.45rem 0.55rem;
+  border: 1px solid var(--line);
+  background: color-mix(in srgb, var(--mist) 70%, var(--surface));
+}
+
+.tldr__bag-list li.is-hit {
+  border-color: color-mix(in srgb, var(--ink) 28%, var(--line));
+}
+
+.tldr__bag-list li.is-active {
+  border-color: var(--ink);
+  background: color-mix(in srgb, var(--ink) 8%, var(--surface));
+}
+
+.tldr__bag-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+}
+
+.tldr__bag-copy strong {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.tldr__bag-copy span {
+  font-size: 0.8rem;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
 .tldr__meta {
   margin: 0.85rem 0 0;
   font-family: var(--font-sans);
@@ -128,5 +185,8 @@
   .tldr__trade-body {
     font-size: 0.9rem;
     overflow-wrap: break-word;
+  }
+  .tldr__bag-copy strong {
+    font-size: 0.78rem;
   }
 }
